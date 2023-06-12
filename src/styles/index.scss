@@ -1,0 +1,215 @@
+:root{
+    --background-color: #fff;
+    --background-light:#fff;
+    --shadow-color: rgba(0,0,0,0.2);
+    --primmary-color: rgb(255,0,86);
+    --text-color: #0A0A0A;
+    --text-light: #575757;
+    --font-size: 16px;
+    --animation-speed: 1;
+}
+
+
+@function getAnimationDuration ($duration: number){
+    @return calc($duration * var(--animation-speed));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+body {
+    font-size: var(--font-size);
+    font-family: 'Roboto', sans-serif;
+    padding-top: 55px
+}
+
+
+
+@import "partials/navbar.scss";
+
+.section{
+    display: flex;
+    align-items: center;
+    margin-bottom: 4vh;
+    flex-wrap: wrap;
+    
+    .title{
+        color: var(--text-color);
+        font-size: 2.5em;
+        margin-bottom: .25em;
+        font-weight: 900;
+    }
+    .info{
+        color: var(--text-light);
+        font-size: 1em;
+        letter-spacing: 1px;
+        line-height: 1.3;
+        margin-bottom: 1.25em;
+    }
+    .col{
+        width: 50%;
+    }
+}
+
+
+.btn{
+    border: none;
+    outline: none;
+    background-color: var(--primmary-color);
+    color: #fff;
+    padding: .75em 1em;
+    text-transform: uppercase;
+    font-size: 1em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    box-shadow: 0 2px 6px var(--shadow-color);
+    &:hover{
+        box-shadow: 0 1px 3px var(--shadow-color);
+        cursor: pointer
+    }
+}
+
+@import "partials/heroSection";
+
+@import "partials/improveSkills";
+
+@import "partials/quoteSection";
+
+@import "partials/chefSection";
+
+.previous-searches{
+    display: block;
+    h2{
+        margin-bottom: .5em
+    }
+    .previous-searches-container{
+        .search-item{
+            background-color: var(--primmary-color);
+            display: inline-block;
+            padding: .5em 1em;
+            margin: 0 1em 1em 0;
+            color: #fff;
+            border-radius: 30px;
+            box-shadow: 0 3px 6px var(--shadow-color);
+            transform: translateX(100%);
+            opacity: 0;
+            animation: getAnimationDuration(.5s) slideInRight forwards;
+        }
+    }
+    .search-box{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 35px;
+        input, .btn{
+            height: 35px;
+        }
+        input{
+            min-width: 250px;
+            padding: 0 .5em;
+            border: 1px solid #4d4d4d;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+        }
+        .btn{
+            padding-block: 0;
+            padding-inline: .75em;
+            border-radius: 0 5px 5px 0;
+        }
+    }
+}
+
+
+
+@import "partials/footer";
+
+
+
+.main{
+    padding-block: 3vw;
+}
+.container {
+    padding-inline: 25vw;   
+    width: 100%;
+}
+
+@import "partials/animation.scss";
+
+
+@media screen and (max-width: 1289px){
+    .container{
+        padding-inline: 18vw;
+    }
+}
+
+@media screen and (max-width: 1050px){
+    .container{
+        padding-inline: 12vw;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .navbar{
+        .nav-links{
+            display: none;
+        }
+        .sidebar-btn{ 
+            display: block;
+        }
+    }
+    .section{
+        .col{
+            width: 100%;
+            padding: 0 !important;
+            text-align: center;
+            margin-bottom: 2em;        
+        }
+    }
+    .section.improve-skills .btn{
+        display: block;
+        margin-left: 50%;
+        transform: translateX(-50%  );
+
+    }
+    .skill-item{
+        display: inline-block;
+        margin: .75em;
+             
+    } 
+    .chef-card{
+        box-shadow: 0 5px 10px var(--shadow-color);
+    }
+    .container{
+        padding-inline: 6vw;
+    }
+    .footer{
+        grid-template-columns: repeat(4, 1fr);
+        .footer-section:nth-child(1){
+            grid-column: span 4;
+        }
+        .footer-section:nth-child(2), .footer-section:nth-child(3){
+            grid-column: span 2;
+        }
+        .footer-section:nth-child(3){
+            padding-right: 2em;
+            margin-left: auto
+        }
+    }
+     
+}
+
+@media screen and (max-width: 480px){
+    .container{
+        padding-inline: 3vw;
+    }
+    
+}
